@@ -1,0 +1,58 @@
+{
+	"name": "NostrLogin",
+	"author": [
+		"Till Wenke"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:NostrLogin",
+	"description": "Allows login with Nostr besides regular MediaWiki login",
+	"version": "0.0.0",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.42.0" // TODO: check against Hitchwiki version
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\NostrLogin\\": "src/"
+	},
+	"AutoloadClasses": {
+		"BoilerPlateHooks": "includes/BoilerPlateHooks.php",
+		"SpecialHelloWorld": "includes/SpecialHelloWorld.php"
+	},
+	"config": {
+		"BoilerPlateEnableFoo": {
+			"value": true,
+			"description": "Enables the foo functionality"
+		}
+	},
+	"callback": "BoilerPlateHooks::onExtensionLoad",
+	"ExtensionMessagesFiles": {
+		"BoilerPlateAlias": "BoilerPlate.i18n.alias.php"
+	},
+	"Hooks": {
+		"NameOfHook": "BoilerPlateHooks::onNameOfHook"
+	},
+	"MessagesDirs": {
+		"BoilerPlate": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.boilerPlate.foo": {
+			"scripts": [
+				"resources/ext.boilerPlate.js",
+				"resources/ext.boilerPlate.foo.js"
+			],
+			"styles": [
+				"resources/ext.boilerPlate.foo.css"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "BoilerPlate"
+	},
+	"SpecialPages": {
+		"HelloWorld": "SpecialHelloWorld"
+	},
+	"manifest_version": 2 // TODO: check against Hitchwiki version
+}
