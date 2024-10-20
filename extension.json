@@ -13,6 +13,9 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\BoilerPlate\\": "src/"
 	},
+	"SpecialPages": {
+		"BoilerPlate": "MediaWiki\\Extension\\BoilerPlate\\Special"
+	},
 	"config": {
 		"BoilerPlateEnableFoo": {
 			"description": "Enable the Foo feature.",
