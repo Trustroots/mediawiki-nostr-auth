@@ -1,10 +1,52 @@
 {
 	"name": "NostrLogin",
-	"author": "Till Wenke",
+	"author": [
+		"Till Wenke"
+	],
 	"url": "https://www.mediawiki.org/wiki/Extension:NostrLogin",
-	"description": "This extension is an example and performs no discernible function",
-	"version": "0.0.0",
+	"descriptionmsg": "nostrlogin-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "other",
-	"manifest_version": 1
+	"requires": {
+		"MediaWiki": ">= 1.42.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\NostrLogin\\": "src/"
+	},
+	"config": {
+		"BoilerPlateEnableFoo": {
+			"description": "Enable the Foo feature.",
+			"value": true
+		},
+		"BoilerPlateVandalizeEachPage": {
+			"description": "Write 'BoilerPlate was here' on each page",
+			"value": false
+		}
+	},
+	"HookHandlers": {
+		"BoilerPlateHooks": {
+			"class": "MediaWiki\\Extension\\BoilerPlate\\Hooks"
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": "BoilerPlateHooks"
+	},
+	"MessagesDirs": {
+		"BoilerPlate": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.boilerPlate": {
+			"localBasePath": "resources/ext.boilerPlate",
+			"remoteExtPath": "BoilerPlate/resources/ext.boilerPlate",
+			"dependencies": [],
+			"styles": [],
+			"packageFiles": [
+				"init.js"
+			],
+			"messages": []
+		}
+	},
+	"manifest_version": 2
 }
