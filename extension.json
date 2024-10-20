@@ -1,9 +1,9 @@
 {
-	"name": "NostrLogin",
+	"name": "BoilerPlate",
 	"author": [
-		"Till Wenke"
+		"Your Name"
 	],
-	"url": "https://www.mediawiki.org/wiki/Extension:NostrLogin",
+	"url": "https://www.mediawiki.org/wiki/Extension:BoilerPlate",
 	"descriptionmsg": "boilerplate-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "other",
@@ -11,7 +11,7 @@
 		"MediaWiki": ">= 1.42.0"
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\NostrLogin\\": "src/"
+		"MediaWiki\\Extension\\BoilerPlate\\": "src/"
 	},
 	"config": {
 		"BoilerPlateEnableFoo": {
