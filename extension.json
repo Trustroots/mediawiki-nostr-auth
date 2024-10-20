@@ -4,7 +4,7 @@
 		"Till Wenke"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:NostrLogin",
-	"descriptionmsg": "nostrlogin-desc",
+	"descriptionmsg": "boilerplate-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "other",
 	"requires": {
