@@ -1,7 +1,7 @@
 {
 	"name": "BoilerPlate",
 	"author": [
-		"Your Name"
+		"nostroots"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:BoilerPlate",
 	"descriptionmsg": "boilerplate-desc",
@@ -11,10 +11,10 @@
 		"MediaWiki": ">= 1.42.0"
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\BoilerPlate\\": "src/"
+		"MediaWiki\\Extension\\BoilerPlate\\": "includes/"
 	},
 	"SpecialPages": {
-		"BoilerPlate": "MediaWiki\\Extension\\BoilerPlate\\Special"
+		"BoilerPlate": "MediaWiki\\Extension\\BoilerPlate\\Special\\SpecialBoilerPlate"
 	},
 	"config": {
 		"BoilerPlateEnableFoo": {

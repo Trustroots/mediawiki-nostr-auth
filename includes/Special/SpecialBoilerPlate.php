@@ -1,6 +1,8 @@
 <?php
-namespace MediaWiki\Extension\BoilerPlate;
-class SpecialMyExtension extends \SpecialPage {
+namespace MediaWiki\Extension\BoilerPlate\Special;
+
+use MediaWiki\SpecialPage\SpecialPage;
+class SpecialBoilerPlate extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'BoilerPlate' );
 	}
