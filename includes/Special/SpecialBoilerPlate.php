@@ -24,6 +24,8 @@ class SpecialBoilerPlate extends SpecialPage {
 		$html .= '<input type="hidden" name="action" value="submit_form">';
 		$html .= '<input type="submit" value="Nostr Extension Login" class="mw-ui-button mw-ui-progressive">';
 		$html .= '</form>';
+		$html .= '<button onclick="printNostr()">Print window.nostr</button>';
+		$html .= '<script>function printNostr() { console.log(window.nostr.getPublicKey());}</script>';
 
 		// Add the HTML to the output
 		$output->addHTML($html);
