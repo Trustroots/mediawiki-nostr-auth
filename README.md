@@ -1,3 +1,22 @@
+# mediawiki nostr auth extension
+
+There is just boilerplate code here for now.
+
+This extension should enable people to log into mediawiki with their nostr identity.
+
+
+## path
+
+We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard today, so it's.
+
+Thoughts about the user flow: https://github.com/Trustroots/mediawiki-nostr-auth/issues/5
+
+When we have something that works we'll set it up on trashwiki.org, then finally hitchwiki.org, which is the most active wiki we run.
+
+
+
+## boilerplate stuff
+
 This is a blank extension template. It doesn't really do anything on its own.
 It is intended to provide a boiler template for an actual MediaWiki extension.
 
