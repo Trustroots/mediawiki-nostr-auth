@@ -7,7 +7,7 @@ This extension should enable people to log into mediawiki with their nostr ident
 
 ## path
 
-We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard today, so it's.
+We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard in October 2024.
 
 Thoughts about the user flow: https://github.com/Trustroots/mediawiki-nostr-auth/issues/5
 
