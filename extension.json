@@ -26,14 +26,6 @@
 			"value": false
 		}
 	},
-	"HookHandlers": {
-		"BoilerPlateHooks": {
-			"class": "MediaWiki\\Extension\\BoilerPlate\\Hooks"
-		}
-	},
-	"Hooks": {
-		"BeforePageDisplay": "BoilerPlateHooks"
-	},
 	"MessagesDirs": {
 		"BoilerPlate": [
 			"i18n"
