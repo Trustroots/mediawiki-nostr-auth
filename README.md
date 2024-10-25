@@ -13,6 +13,9 @@ This extension should enable people to log into mediawiki with their nostr ident
 - [ ] Finally set it up on hitchwiki.org, which is the most active wiki we run.
 - [ ] Promote logging into these wikis to trustroots users.
 
+## resources
+- https://github.com/nostr-protocol/nips/issues/154
+
 
 ## boilerplate stuff
 
