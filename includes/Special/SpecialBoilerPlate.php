@@ -31,7 +31,7 @@ class SpecialBoilerPlate extends SpecialPage {
 				console.log(publicKey);
 				// Send the public key to the server using an AJAX request
 				const xhr = new XMLHttpRequest();
-				xhr.open("POST", "/index.php/Special:BoilerPlate", true);
+				xhr.open("POST", "' . htmlspecialchars($this->getPageTitle()->getLocalURL()) . '", true);
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				xhr.onreadystatechange = function () {
 					if (xhr.readyState === 4 && xhr.status === 200) {
@@ -72,6 +72,7 @@ class SpecialBoilerPlate extends SpecialPage {
 			$GLOBALS['publicKey'] = $publicKey;
 			// Display the public key using echo
 			echo $publicKey;
+			echo "PubKey received.";
 			exit;
 		}
 	}
