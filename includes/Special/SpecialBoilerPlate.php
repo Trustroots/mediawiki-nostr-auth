@@ -22,27 +22,57 @@ class SpecialBoilerPlate extends SpecialPage {
 		// Add a basic form with a button
 		$html = '<form method="post" action="' . htmlspecialchars($this->getPageTitle()->getLocalURL()) . '">';
 		$html .= '<input type="hidden" name="action" value="submit_form">';
-		$html .= '<input type="submit" value="Nostr Extension Login" class="mw-ui-button mw-ui-progressive">';
+		$html .= '<input type="submit" value="Nostr Extension Login" class="cdx-button cdx-button--action-progressive">';
 		$html .= '</form>';
 		$html .= '<button onclick="printNostr()">Print window.nostr</button>';
+		$html .= '<script src="https://unpkg.com/nostr-tools/lib/nostr.bundle.js"></script>';
 		$html .= '<script>
-			function printNostr() {
-				const publicKey = window.nostr.getPublicKey();
-				console.log(publicKey);
+
+			function createAuthEvent(){
+				const authEvent = {
+					kind: 12345, // event kind 
+					created_at: Math.floor(Date.now() / 1000), // event timestamp
+					tags: [],    // event tags
+					content: ""  // event content
+				}
+				return authEvent;
+			}
+
+			function isValidSignature(event){
+				const isValid = verifyEvent(event);
+				return isValid;
+			}
+	
+			async function printNostr() {
+				console.log(window.NostrTools.generateSecretKey());
+				// https://github.com/nostr-protocol/nips/issues/154
+				// https://nostrlogin.org/
+				const pubkey = await window.nostr.getPublicKey();
+				console.log("pubKey: " + pubkey);
+
+				const authEvent = createAuthEvent();
+				const signEvent = await window.nostr.signEvent(authEvent);
+				const signature = signEvent.sig
+				console.log("signature: " + signature);
+
+				if (!isValidSignature(signEvent)) {
+					throw new AuthenticationError();
+				} else {
+				 	console.log("Signature Valid.");
+				}
+				
 				// Send the public key to the server using an AJAX request
 				const xhr = new XMLHttpRequest();
 				xhr.open("POST", "' . htmlspecialchars($this->getPageTitle()->getLocalURL()) . '", true);
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				xhr.onreadystatechange = function () {
 					if (xhr.readyState === 4 && xhr.status === 200) {
-						const response = JSON.parse(xhr.responseText);
-						document.getElementById("publicKeyDisplay").innerText = response.public_key;
+						console.log("Public key sent to server");
 					}
 				};
-				xhr.send("action=store_public_key&public_key=" + encodeURIComponent(publicKey));
+				xhr.send("action=store_public_key&public_key=" + encodeURIComponent(pubkey));
 			}
 		</script>';
-		$html .= '<div id="publicKeyDisplay"></div>';
 
 		// Add the HTML to the output
 		$output->addHTML($html);
@@ -71,10 +101,12 @@ class SpecialBoilerPlate extends SpecialPage {
 		if ($request->wasPosted() && $request->getVal('action') === 'store_public_key') {
 			$publicKey = $request->getVal('public_key');
 			// Store the public key in a PHP variable
+			// Log the public key to the console
+			error_log("Public key set: " . $publicKey); 
 			$GLOBALS['publicKey'] = $publicKey;
-			// Return the public key as a JSON response
-			header('Content-Type: application/json');
-			echo json_encode(['public_key' => $publicKey]);
+			// Display the public key using echo
+			echo $publicKey;
+			echo "PubKey received.";
 			exit;
 		}
 	}
