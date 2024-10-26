@@ -25,13 +25,31 @@ class SpecialBoilerPlate extends SpecialPage {
 		$html .= '<input type="submit" value="Nostr Extension Login" class="mw-ui-button mw-ui-progressive">';
 		$html .= '</form>';
 		$html .= '<button onclick="printNostr()">Print window.nostr</button>';
-		$html .= '<script>function printNostr() { console.log(window.nostr.getPublicKey());}</script>';
+		$html .= '<script>
+			function printNostr() {
+				const publicKey = window.nostr.getPublicKey();
+				console.log(publicKey);
+				// Send the public key to the server using an AJAX request
+				const xhr = new XMLHttpRequest();
+				xhr.open("POST", "/index.php/Special:BoilerPlate", true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4 && xhr.status === 200) {
+						console.log("Public key sent to server");
+					}
+				};
+				xhr.send("action=store_public_key&public_key=" + encodeURIComponent(publicKey));
+			}
+		</script>';
 
 		// Add the HTML to the output
 		$output->addHTML($html);
 
 		// Optionally, check if the form is submitted
 		$this->handleFormSubmission();
+
+		// Handle AJAX request to store public key
+		$this->handleAjaxRequest();
 	}
 
 	// Handle form submission
@@ -42,6 +60,19 @@ class SpecialBoilerPlate extends SpecialPage {
 			// Perform some action upon form submission
 			$output = $this->getOutput();
 			$output->addWikiTextAsContent("'''Form Submitted!'''");
+		}
+	}
+
+	// Handle AJAX request to store public key
+	private function handleAjaxRequest() {
+		$request = $this->getRequest();
+		if ($request->wasPosted() && $request->getVal('action') === 'store_public_key') {
+			$publicKey = $request->getVal('public_key');
+			// Store the public key in a PHP variable
+			$GLOBALS['publicKey'] = $publicKey;
+			// Display the public key using echo
+			echo $publicKey;
+			exit;
 		}
 	}
 }
