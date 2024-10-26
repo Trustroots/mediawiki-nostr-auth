@@ -35,12 +35,14 @@ class SpecialBoilerPlate extends SpecialPage {
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				xhr.onreadystatechange = function () {
 					if (xhr.readyState === 4 && xhr.status === 200) {
-						console.log("Public key sent to server");
+						const response = JSON.parse(xhr.responseText);
+						document.getElementById("publicKeyDisplay").innerText = response.public_key;
 					}
 				};
 				xhr.send("action=store_public_key&public_key=" + encodeURIComponent(publicKey));
 			}
 		</script>';
+		$html .= '<div id="publicKeyDisplay"></div>';
 
 		// Add the HTML to the output
 		$output->addHTML($html);
@@ -70,9 +72,9 @@ class SpecialBoilerPlate extends SpecialPage {
 			$publicKey = $request->getVal('public_key');
 			// Store the public key in a PHP variable
 			$GLOBALS['publicKey'] = $publicKey;
-			// Display the public key using echo
-			echo $publicKey;
-			echo "PubKey received.";
+			// Return the public key as a JSON response
+			header('Content-Type: application/json');
+			echo json_encode(['public_key' => $publicKey]);
 			exit;
 		}
 	}
