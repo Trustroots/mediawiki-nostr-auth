@@ -2,6 +2,13 @@
 namespace MediaWiki\Extension\BoilerPlate\Special;
 
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsManager;
+use MediaWiki\Auth\TemporaryPasswordAuthenticationRequest;
+use MediaWiki\Auth\AuthManager;
+use MediaWiki\Auth\AuthenticationRequest;
+
 class SpecialBoilerPlate extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'BoilerPlate' );
@@ -22,6 +29,10 @@ class SpecialBoilerPlate extends SpecialPage {
 		// Add a basic form with a button
 		$html = '<form method="post" action="' . htmlspecialchars($this->getPageTitle()->getLocalURL()) . '">';
 		$html .= '<input type="hidden" name="action" value="submit_form">';
+		$html .= '<label for="username">Username:</label>';
+		$html .= '<input type="text" id="username" name="username" required>';
+		$html .= '<label for="password">Password:</label>';
+		$html .= '<input type="password" id="password" name="password" required>';
 		$html .= '<input type="submit" value="Create new account" class="cdx-button cdx-button--action-progressive">';
 		$html .= '</form>';
 		$html .= '<button onclick="printNostr()">Print window.nostr</button>';
@@ -77,9 +88,6 @@ class SpecialBoilerPlate extends SpecialPage {
 		// Add the HTML to the output
 		$output->addHTML($html);
 
-		$username = "Bob";
-		$password = "1q2w3e4r**";
-
 		// Optionally, check if the form is submitted
 		$this->handleFormSubmission();
 
@@ -92,9 +100,23 @@ class SpecialBoilerPlate extends SpecialPage {
 		// Check if the form has been submitted
 		$request = $this->getRequest();
 		if ($request->getVal('action') === 'submit_form') {
-			// Perform some action upon form submission
-			$output = $this->getOutput();
-			$output->addWikiTextAsContent("'''Form Submitted!'''");
+			$username = $request->getVal('username');
+			$password = $request->getVal('password');
+			
+			$userFactory = $this->getContext()->getUserFactory();
+			$user = $userFactory->newFromName($username);
+			
+			if ($user->getId() == 0) {
+				$user->setPassword($password);
+				$user->addToDatabase();
+				$user->saveSettings();
+				
+				$output = $this->getOutput();
+				$output->addWikiTextAsContent("'''Account created successfully!'''");
+			} else {
+				$output = $this->getOutput();
+				$output->addWikiTextAsContent("'''Username already exists. Please choose another one.'''");
+			}
 		}
 	}
 
