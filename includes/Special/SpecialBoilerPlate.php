@@ -39,12 +39,12 @@ class SpecialBoilerPlate extends SpecialPage {
 			}
 
 			function isValidSignature(event){
-				const isValid = verifyEvent(event);
+				const isValid = window.NostrTools.verifyEvent(event);
 				return isValid;
 			}
 	
 			async function printNostr() {
-				console.log(window.NostrTools.generateSecretKey());
+				// console.log(window.NostrTools.generateSecretKey());
 				// https://github.com/nostr-protocol/nips/issues/154
 				// https://nostrlogin.org/
 				const pubkey = await window.nostr.getPublicKey();
