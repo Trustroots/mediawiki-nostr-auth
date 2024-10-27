@@ -22,7 +22,7 @@ class SpecialBoilerPlate extends SpecialPage {
 		// Add a basic form with a button
 		$html = '<form method="post" action="' . htmlspecialchars($this->getPageTitle()->getLocalURL()) . '">';
 		$html .= '<input type="hidden" name="action" value="submit_form">';
-		$html .= '<input type="submit" value="Nostr Extension Login" class="cdx-button cdx-button--action-progressive">';
+		$html .= '<input type="submit" value="Create new account" class="cdx-button cdx-button--action-progressive">';
 		$html .= '</form>';
 		$html .= '<button onclick="printNostr()">Print window.nostr</button>';
 		$html .= '<script src="https://unpkg.com/nostr-tools/lib/nostr.bundle.js"></script>';
@@ -76,6 +76,9 @@ class SpecialBoilerPlate extends SpecialPage {
 
 		// Add the HTML to the output
 		$output->addHTML($html);
+
+		$username = "Bob";
+		$password = "1q2w3e4r**";
 
 		// Optionally, check if the form is submitted
 		$this->handleFormSubmission();
