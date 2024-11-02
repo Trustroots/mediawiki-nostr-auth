@@ -8,6 +8,8 @@ use MediaWiki\User\UserOptionsManager;
 use MediaWiki\Auth\TemporaryPasswordAuthenticationRequest;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Auth\AuthenticationRequest;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 
 class SpecialBoilerPlate extends SpecialPage {
 	public function __construct() {
@@ -18,6 +20,10 @@ class SpecialBoilerPlate extends SpecialPage {
 		$request = $this->getRequest();
 		$output = $this->getOutput();
 		$this->setHeaders();
+
+		if (!$this->getUser()->isAllowed('createaccount')) {
+            throw new PermissionsError('createaccount');
+        }
 
 		# Get request data from, e.g.
 		$param = $request->getText( 'param' );
@@ -99,20 +105,31 @@ class SpecialBoilerPlate extends SpecialPage {
 	private function handleFormSubmission() {
 		// Check if the form has been submitted
 		$request = $this->getRequest();
+		$output = $this->getOutput();
 		if ($request->getVal('action') === 'submit_form') {
 			$username = $request->getVal('username');
 			$password = $request->getVal('password');
 			
-			$userFactory = $this->getContext()->getUserFactory();
+			$userFactory = MediaWikiServices::getInstance()->getUserFactory();
 			$user = $userFactory->newFromName($username);
+
+			$output->addWikiTextAsContent("'''Creating account...'''" . $user->getName() ."". $password ."");
 			
+			// from includes/installer/Installer.php
 			if ($user->getId() == 0) {
-				$user->setPassword($password);
 				$user->addToDatabase();
+				$status = $user->changeAuthenticationData( [
+					'username' => $user->getName(),
+					'password' => $password,
+					'retype' => $password,
+				] );
 				$user->saveSettings();
 				
-				$output = $this->getOutput();
-				$output->addWikiTextAsContent("'''Account created successfully!'''");
+				if ($status->isGood()) {
+					$output->addWikiTextAsContent("'''Account created successfully!'''");
+				} else {
+					$output->addWikiTextAsContent("'''Error creating account: " . $status->getWikiText() . "'''");
+				}
 			} else {
 				$output = $this->getOutput();
 				$output->addWikiTextAsContent("'''Username already exists. Please choose another one.'''");
