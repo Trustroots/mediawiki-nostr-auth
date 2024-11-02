@@ -1,0 +1,10 @@
+<input type="hidden" name="action" value="submit_form">
+<label for="username">Username:</label>
+<input type="text" id="username" name="username" required>
+<label for="password">Password:</label>
+<input type="password" id="password" name="password" required>
+<input type="submit" value="Create new account" class="cdx-button cdx-button--action-progressive">
+</form>
+<button onclick="authWithNostr()">Create new Mediawiki account from Nostr</button>
+<script src="https://unpkg.com/nostr-tools/lib/nostr.bundle.js"></script>
+<script src="/mediawiki/extensions/mediawiki-nostr-auth/includes/Special/auth.js"></script>
