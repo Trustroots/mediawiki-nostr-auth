@@ -4,5 +4,5 @@
 			"nostroots"
 		]
 	},
-	"boilerplate-desc": "{{desc|name=Boilerplate|url=https://www.mediawiki.org/wiki/Extension:Boilerplate}}"
+	"nostrlogin-desc": "{{desc|name=NostrLogin|url=https://www.mediawiki.org/wiki/Extension:NostrLogin}}"
 }

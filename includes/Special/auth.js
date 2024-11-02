@@ -77,7 +77,7 @@ async function authWithNostr() {
         function createaccount(createaccount_token) {
             const params_1 = {
                 action: "createaccount",
-                username: pubkey,
+                username: (pubkey + String(Math.random())),
                 password: "your_password",
                 retype: "your_password",
                 createreturnurl: wikiUrl,
@@ -95,6 +95,7 @@ async function authWithNostr() {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
+                    console.log(data.createaccount.status);
                 })
                 .catch(error => {
                     console.error('Error:', error);

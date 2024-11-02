@@ -1,15 +1,15 @@
 <?php
-namespace MediaWiki\Extension\BoilerPlate\Special;
+namespace MediaWiki\Extension\NostrLogin\Special;
 
 use MediaWiki\SpecialPage\SpecialPage;
 
 
-class SpecialBoilerPlate extends SpecialPage
+class SpecialNostrLogin extends SpecialPage
 {
 	
 	public function __construct()
 	{
-		parent::__construct('BoilerPlate');
+		parent::__construct('NostrLogin');
 	}
 
 	public function execute($par)

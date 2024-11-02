@@ -1,5 +1,5 @@
 {
-	"name": "BoilerPlate",
+	"name": "NostrLogin",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
@@ -14,8 +14,5 @@
 	},
 	"eslintIgnore": [
 		"vendor/**"
-	],
-	"dependencies": {
-		"node-fetch": "^3.3.2"
-	}
+	]
 }
