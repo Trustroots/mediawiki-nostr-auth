@@ -2,9 +2,7 @@
 // Set header to JSON for the response
 header("Content-Type: application/json");
 
-//use MediaWiki\MediaWikiServices as MWS;
-
-require "/var/lib/mediawiki/includes/MediaWikiServices.php";
+use MediaWiki\MediaWikiServices;
 
 // Get the JSON input from the request body
 $input = file_get_contents("php://input");
@@ -23,7 +21,7 @@ if ($data) {
     $password = "password";
     
     
-    $userFactory = MWS::getInstance()->getUserFactory();
+    $userFactory = MediaWikiServices::getInstance()->getUserFactory();
     $user = $userFactory->newFromName($username);
 
     // from includes/installer/Installer.php

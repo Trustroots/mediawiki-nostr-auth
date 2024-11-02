@@ -32,21 +32,77 @@ async function authWithNostr() {
             npub: pubkey,
             signature: "valid"
         };
+
+        /*  
+            create_account.js
         
-        // Send POST request
-        fetch("/mediawiki/extensions/mediawiki-nostr-auth/includes/Special/createUser.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json" // Sending data as JSON
-            },
-            body: JSON.stringify(data) // Convert the data object to a JSON string
-        })
-        .then(response => response.json())
-        .then(result => {
-            console.log("Success:", result); // Handle response from the server
-        })
-        .catch(error => {
-            console.error("Error:", error); // Handle any errors
-        });
+            MediaWiki API Demos
+            Demo of `createaccount` module: Create an account on a wiki without the
+            special authentication extensions
+
+            MIT license
+        */
+
+
+        var wikiUrl = "http://localhost",
+            endPoint = wikiUrl + "/mediawiki/api.php";
+
+        // Step 1: GET request to fetch createaccount token
+        function getCreateAccountToken() {
+            const params_0 = new URLSearchParams({
+                action: "query",
+                meta: "tokens",
+                type: "createaccount",
+                format: "json"
+            });
+
+            fetch(`${endPoint}?${params_0}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    createaccount(data.query.tokens.createaccounttoken);
+                })
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                });
+        }
+
+        // Step 2: POST request with the fetched token and other data (user information,
+        // return URL, etc.)  to the API to create an account
+        function createaccount(createaccount_token) {
+            const params_1 = {
+                action: "createaccount",
+                username: pubkey,
+                password: "your_password",
+                retype: "your_password",
+                createreturnurl: wikiUrl,
+                createtoken: createaccount_token,
+                format: "json"
+            };
+
+            fetch(endPoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams(params_1)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+        }
+
+        // Start From Step 1
+        getCreateAccountToken();
     }
 }

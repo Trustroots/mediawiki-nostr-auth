@@ -26,5 +26,10 @@
 	},
 	"require": {
 		"swentel/nostr-php": "^1.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"MediaWiki\\Composer\\": "../../includes/composer"
+		}
 	}
 }

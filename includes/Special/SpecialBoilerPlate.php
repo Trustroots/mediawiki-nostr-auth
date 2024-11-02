@@ -7,9 +7,13 @@ use MediaWiki\MediaWikiServices;
 
 class SpecialBoilerPlate extends SpecialPage
 {
+	private static $userFactory;
+	
+
 	public function __construct()
 	{
 		parent::__construct('BoilerPlate');
+		self::$userFactory = MediaWikiServices::getInstance()->getUserFactory();
 	}
 
 	public function execute($par)
@@ -51,8 +55,8 @@ class SpecialBoilerPlate extends SpecialPage
 			$username = $request->getVal('username');
 			$password = $request->getVal('password');
 
-			$userFactory = MediaWikiServices::getInstance()->getUserFactory();
-			$user = $userFactory->newFromName($username);
+
+			$user = self::$userFactory->newFromName($username);
 
 			$output->addWikiTextAsContent("'''Creating account...'''" . $user->getName() . "" . $password . "");
 
@@ -99,8 +103,7 @@ class SpecialBoilerPlate extends SpecialPage
 			// TODO: generate a random password
 			$password = "password";
 
-			$userFactory = MWS::getInstance()->getUserFactory();
-			$user = $userFactory->newFromName($username);
+			$user = self::$userFactory->newFromName($username);
 
 			// from includes/installer/Installer.php
 			if ($user->getId() == 0) {
