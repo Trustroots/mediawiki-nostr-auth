@@ -16,30 +16,29 @@ This extension should enable people to log into mediawiki with their nostr ident
 
 - https://github.com/nostr-protocol/nips/issues/154
 
-### installation
+## installation
+Go to the root of your MediaWiki setup.
 
-
+Run:
 ```
+cd extensions
+git clone https://github.com/Trustroots/mediawiki-nostr-auth.git
+```
+
+Add the following to `LocalSettings.php`
+```
+wfLoadExtension( 'mediawiki-nostr-auth' );
 $NostrLoginDomains = [
 	   'trustroots.org',
 	   'couchers.org'
 ];
 ```
 
+## assumptions
+- browser extension (e.g Alby) used to sign Nostr events
+- no user with the same trustroots user name exists so far in the wiki
 
-## boilerplate stuff
-
-This is a blank extension template. It doesn't really do anything on its own.
-It is intended to provide a boiler template for an actual MediaWiki extension.
-
-If you are checking this out from Git and intend to use it, you may use the
-following commands to make a clean directory of just this template without the
-Git meta-data and other examples.
-
-    cd extensions
-	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/BoilerPlate.git
-	cp -r BoilerPlate ./MyExtension
-	rm -rf ./MyExtension/.git
+## developing
 
 This automates the recommended code checkers for PHP and JavaScript code in Wikimedia projects
 (see https://www.mediawiki.org/wiki/Continuous_integration/Entry_points).
