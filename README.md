@@ -1,7 +1,5 @@
 # mediawiki nostr auth extension
 
-There is just boilerplate code here for now.
-
 This extension should enable people to log into mediawiki with their nostr identity.
 
 ## path forward
