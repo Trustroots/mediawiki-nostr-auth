@@ -4,7 +4,6 @@ There is just boilerplate code here for now.
 
 This extension should enable people to log into mediawiki with their nostr identity.
 
-
 ## path forward
 
 - [ ] We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard in October 2024.
@@ -14,7 +13,18 @@ This extension should enable people to log into mediawiki with their nostr ident
 - [ ] Promote logging into these wikis to trustroots users.
 
 ## resources
+
 - https://github.com/nostr-protocol/nips/issues/154
+
+### installation
+
+
+```
+$NostrLoginDomains = [
+	   'trustroots.org',
+	   'couchers.org'
+];
+```
 
 
 ## boilerplate stuff
@@ -26,7 +36,7 @@ If you are checking this out from Git and intend to use it, you may use the
 following commands to make a clean directory of just this template without the
 Git meta-data and other examples.
 
-	cd extensions
+    cd extensions
 	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/BoilerPlate.git
 	cp -r BoilerPlate ./MyExtension
 	rm -rf ./MyExtension/.git

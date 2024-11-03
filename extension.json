@@ -33,5 +33,14 @@
 			"messages": []
 		}
 	},
+	"config_prefix": "NostrLogin",
+	"config": {
+		"Domains": {
+			"value": [],
+			"descriptionmsg": "nostrlogin-config-domains",
+			"path": false,
+			"public": true
+		}
+	},
 	"manifest_version": 2
 }

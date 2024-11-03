@@ -10,6 +10,7 @@ class SpecialNostrLogin extends SpecialPage
 	public function __construct()
 	{
 		parent::__construct('NostrLogin');
+		$this->config = new Config();
 	}
 
 	public function execute($par)
@@ -22,8 +23,11 @@ class SpecialNostrLogin extends SpecialPage
 			throw new PermissionsError('createaccount');
 		}
 
-		// Add a basic button
-		$html = file_get_contents(__DIR__ . '/' . 'login.html');
+		$NostrLoginDomains = $this->config->getDomains();
+		
+		ob_start();
+		include "content.php";
+		$html = ob_get_clean();		
 
 		// Add the HTML to the output
 		$output->addHTML($html);

@@ -100,9 +100,10 @@ function createAccount(username, createaccount_token) {
 
 async function authWithNostr() {
     const username = document.getElementById('username').value;
+    const domain = document.getElementById("domain").value;
     console.log("Username: " + username);
     // check for trustroots user
-    let profile = await window.NostrTools.nip05.queryProfile(fullname = username + '@trustroots.org')
+    let profile = await window.NostrTools.nip05.queryProfile(fullname = username + domain)
     console.log(profile)
 
     const pubkey_nip05 = profile.pubkey
