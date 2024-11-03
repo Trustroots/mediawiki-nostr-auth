@@ -45,6 +45,27 @@ function getCreateAccountToken(username) {
 }
 
 
+async function getLogInToken() {
+    try {
+        const params_0 = new URLSearchParams({
+            action: "query",
+            meta: "tokens",
+            type: "login",
+            format: "json"
+        });
+    
+        const response = await fetch(`${ENDPOINT}?${params_0}`)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json(); // Assuming the response is JSON
+        return data.query.tokens.logintoken;
+    } catch (error) {
+        console.error('Fetch error:', error);
+    }
+}
+
+
 function createAccount(username, createaccount_token) {
     // check if mediawiki account exists
     const params = new URLSearchParams({
@@ -97,6 +118,37 @@ function createAccount(username, createaccount_token) {
         })
 }
 
+function logInAccount(username, password, logintoken) {
+    const params = new URLSearchParams({
+        action: "clientlogin",
+        username: username,
+        password: password,
+        logintoken: logintoken,
+        loginreturnurl: WIKIURL,
+        format: "json"
+    });
+
+    fetch(ENDPOINT, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: params
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            console.log(data.clientlogin.status);
+            if (data.clientlogin.status === "PASS") {
+                alert('Login success! Welcome, ' + username + '!');
+                window.location.href = '/mediawiki/index.php?title=Special:UserLogin';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
 
 async function authWithNostr() {
     const username = document.getElementById('username').value;
@@ -133,4 +185,42 @@ async function authWithNostr() {
     console.log("Signature Valid.");
 
     getCreateAccountToken(username);
+}
+
+async function logInWithNostr() {
+    const username = document.getElementById('username').value;
+    const domain = document.getElementById("domain").value;
+    console.log("Username: " + username);
+    // check for trustroots user
+    let profile = await window.NostrTools.nip05.queryProfile(fullname = username + domain)
+    console.log(profile)
+
+    const pubkey_nip05 = profile.pubkey
+
+    // use browser extension to verify the user
+    // from https://github.com/nostr-protocol/nips/issues/154
+    // from https://nostrlogin.org/
+    if (!window.nostr) {
+        throw new AuthenticationError("No Nostr Browser Extension found");
+    }
+    const pubkey_nip07 = await window.nostr.getPublicKey();
+    if (pubkey_nip05 != pubkey_nip07) {
+        throw new AuthenticationError("Nip05-Nip07 Pubkey mismatch");
+    }
+    const pubkey = pubkey_nip07;
+
+    console.log("pubKey: " + pubkey);
+
+    const authEvent = createAuthEvent();
+    const signEvent = await window.nostr.signEvent(authEvent);
+    const signature = signEvent.sig
+    console.log("signature: " + signature);
+
+    if (!isValidSignature(signEvent)) {
+        throw new AuthenticationError("Invalid Signature - Seems like that an incorrect private key was used to sign the event");
+    }
+    console.log("Signature Valid.");
+    const logInToken = await getLogInToken();
+    console.log("logInToken: " + logInToken);
+    logInAccount(username, "your_password", logInToken);
 }
