@@ -40,7 +40,7 @@ class NostrAuth extends PA_Base
 	/**
 	 * Name of nostr extra login field
 	 */
-	const NOSTR = 'nostr';
+	const NOSTR_PASSWORD = 'nostr_password';
 
 
 	/**
@@ -66,27 +66,49 @@ class NostrAuth extends PA_Base
 		);
 
 		$username = $extraLoginFields[static::USERNAME] ?? '';
-		$event_json = $extraLoginFields[static::NOSTR] ?? '';
+		$nostr = $extraLoginFields[static::NOSTR_PASSWORD] ?? '';
 
 		$url = 'https://www.trustroots.org/.well-known/nostr.json?name=' . $username;
 		$json = file_get_contents($url);
 		$obj = json_decode($json, true);
 		$npub = $obj["names"][ucfirst($username)];
+		
+		// in accordance with auth.js
+		$note = new Event();
+		$note->setKind(12345);
+		$note->setContent("");
+		$note->setSignature($nostr);
+		$note->setPublicKey($npub);
+		$note->setTags([]);
+		$note->setCreatedAt(0);
 
-		$event = json_decode($event_json, flags: \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE | \JSON_THROW_ON_ERROR);
-		if ($event->pubkey != $npub) {
-			$errorMessage = "Nostr pubkey mismatch";
-			return false;
+		try {
+            $computedId = hash(
+                'sha256',
+                json_encode(
+                    [
+                        0,
+                        $note->getPublicKey(),
+                        $note->getCreatedAt(),
+                        $note->getKind(),
+                        $note->getTags(),
+                        $note->getContent(),
+                    ],
+                    \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE,
+                ),
+            );
+        } catch (\JsonException) {
+			$errorMessage = "Problems with Nostr event ID calculation.";
+            return false;
+        }
+
+		$note->setId($computedId);
+
+		if (!$note->verify()) {
+			$errorMessage = "Nostr signature verification failed";
+			//return false;
 		}
 
-		
-
-		$event = new Event();
-		if (!$event->verify($event_json)) {
-			$errorMessage = "Nostr verification failed - signature could not be verified";
-			return false;
-		}
-		
 		return true;
 	}
 
@@ -116,10 +138,10 @@ class NostrAuth extends PA_Base
 				'label' => "Username",
 				'help' => "Username",
 			],
-			static::NOSTR => [
+			static::NOSTR_PASSWORD => [
 				'type' => 'string',
-				'label' => "Nostr",
-				'help' => "Nostr",
+				'label' => "Nostr Password",
+				'help' => "Get your Nostr password from Special:NostrLogin",
 			]
 		];
 	}

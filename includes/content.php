@@ -7,6 +7,5 @@
 <button onclick="authWithNostr()">Sign Up with Nostr</button>
 <button onclick="logInWithNostr()">Log In with Nostr</button>
 <script src="https://unpkg.com/nostr-tools/lib/nostr.bundle.js"></script>
-<script src="/mediawiki/extensions/mediawiki-nostr-auth/includes/Special/auth.js"></script>
-<p id="result"></p>
-<p id="event"></p>
+<script src="/mediawiki/extensions/mediawiki-nostr-auth/includes/auth.js"></script>
+<p id="nostr_password"></p>

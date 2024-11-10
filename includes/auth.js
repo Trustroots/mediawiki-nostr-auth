@@ -2,7 +2,7 @@ function createAuthEvent() {
     // dummy event
     const authEvent = {
         kind: 12345, // event kind 
-        created_at: Math.floor(Date.now() / 1000), // event timestamp
+        created_at: 0, // event timestamp
         tags: [],    // event tags
         content: ""  // event content
     }
@@ -223,7 +223,5 @@ async function logInWithNostr() {
     console.log("Signature Valid.");
     const logInToken = await getLogInToken();
     console.log("logInToken: " + logInToken);
-    document.getElementById("result").innerHTML = "logInToken: " + logInToken;
-    document.getElementById("event").innerHTML = "auth event: " + JSON.stringify(signEvent);
-    //logInAccount(username, "your_password", logInToken);
+    document.getElementById("nostr_password").innerHTML = "auth event: " + signEvent.sig;
 }
