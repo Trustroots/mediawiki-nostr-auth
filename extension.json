@@ -8,30 +8,37 @@
 	"license-name": "GNU Affero General Public License v3.0",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.42.0"
+		"MediaWiki": ">= 1.42.0",
+		"platform": {
+			"php": ">=7.1"
+		},
+		"extensions": {
+			"PluggableAuth": "7.*"
+		}
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\NostrLogin\\": "includes/"
 	},
+	"Hooks": {},
+	"callback": "MediaWiki\\Extension\\NostrLogin\\NostrAuthHooks::onRegistration",
+	"attributes": {
+		"PluggableAuth": {
+			"NostrLogin": {
+				"class": "MediaWiki\\Extension\\NostrLogin\\NostrAuth",
+				"services": [
+					"AuthManager"
+				],
+				"LoginSpecialPages": [ "NostrLogin" ]
+			}
+		}
+	},
 	"SpecialPages": {
-		"NostrLogin": "MediaWiki\\Extension\\NostrLogin\\Special\\SpecialNostrLogin"
+		"NostrLogin": "MediaWiki\\Extension\\NostrLogin\\SpecialNostrLogin"
 	},
 	"MessagesDirs": {
 		"NostrLogin": [
 			"i18n"
 		]
-	},
-	"ResourceModules": {
-		"ext.boilerPlate": {
-			"localBasePath": "resources/ext.boilerPlate",
-			"remoteExtPath": "NostrLogin/resources/ext.boilerPlate",
-			"dependencies": [],
-			"styles": [],
-			"packageFiles": [
-				"init.js"
-			],
-			"messages": []
-		}
 	},
 	"config_prefix": "NostrLogin",
 	"config": {

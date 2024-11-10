@@ -23,5 +23,8 @@
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
+	},
+	"require": {
+		"swentel/nostr-php": "^1.5"
 	}
 }

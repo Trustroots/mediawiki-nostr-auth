@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27bf424e64728f77ff55e92ee3f358d9",
+    "content-hash": "3718d74acbb6c85138f8a593496564ae",
     "packages": [
         {
             "name": "bitwasp/bech32",
@@ -667,16 +667,16 @@
         },
         {
             "name": "swentel/nostr-php",
-            "version": "1.4.2",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nostrver-se/nostr-php.git",
-                "reference": "212fed712745203b3af6815a2765c1377fa6920f"
+                "reference": "3f42292207d21a479c8656c6269a0de0e9fad927"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nostrver-se/nostr-php/zipball/212fed712745203b3af6815a2765c1377fa6920f",
-                "reference": "212fed712745203b3af6815a2765c1377fa6920f",
+                "url": "https://api.github.com/repos/nostrver-se/nostr-php/zipball/3f42292207d21a479c8656c6269a0de0e9fad927",
+                "reference": "3f42292207d21a479c8656c6269a0de0e9fad927",
                 "shasum": ""
             },
             "require": {
@@ -728,9 +728,9 @@
                 "chat": "https://t.me/nostr_php",
                 "issue": "https://github.com/swentel/nostr-php/issues",
                 "issues": "https://github.com/nostrver-se/nostr-php/issues",
-                "source": "https://github.com/nostrver-se/nostr-php/tree/1.4.2"
+                "source": "https://github.com/nostrver-se/nostr-php/tree/1.5.0"
             },
-            "time": "2024-10-18T07:56:36+00:00"
+            "time": "2024-11-05T12:08:34+00:00"
         },
         {
             "name": "uma/phpecc",

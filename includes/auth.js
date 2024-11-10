@@ -53,7 +53,7 @@ async function getLogInToken() {
             type: "login",
             format: "json"
         });
-    
+
         const response = await fetch(`${ENDPOINT}?${params_0}`)
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -142,7 +142,8 @@ function logInAccount(username, password, logintoken) {
             if (data.clientlogin.status === "PASS") {
                 alert('Login success! Welcome, ' + username + '!');
                 window.location.href = '/mediawiki/index.php?title=Special:UserLogin';
-            }
+            } else
+                throw new Error("Login failed");
         })
         .catch(error => {
             console.error('Error:', error);
@@ -222,5 +223,7 @@ async function logInWithNostr() {
     console.log("Signature Valid.");
     const logInToken = await getLogInToken();
     console.log("logInToken: " + logInToken);
-    logInAccount(username, "your_password", logInToken);
+    document.getElementById("result").innerHTML = "logInToken: " + logInToken;
+    document.getElementById("event").innerHTML = "auth event: " + JSON.stringify(signEvent);
+    //logInAccount(username, "your_password", logInToken);
 }

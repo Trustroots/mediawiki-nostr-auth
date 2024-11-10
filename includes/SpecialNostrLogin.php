@@ -1,5 +1,5 @@
 <?php
-namespace MediaWiki\Extension\NostrLogin\Special;
+namespace MediaWiki\Extension\NostrLogin;
 
 use MediaWiki\SpecialPage\SpecialPage;
 
