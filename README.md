@@ -1,7 +1,5 @@
 # mediawiki nostr auth extension
 
-There is just boilerplate code here for now.
-
 This extension should enable people to log into mediawiki with their nostr identity.
 
 ## path forward
@@ -15,6 +13,11 @@ This extension should enable people to log into mediawiki with their nostr ident
 ## resources
 
 - https://github.com/nostr-protocol/nips/issues/154
+
+## inspiration
+- https://github.com/wikimedia/mediawiki-extensions-GoogleLogin
+- https://github.com/hexmode/mediawiki-iframe/tree/master
+- https://github.com/wikimedia/mediawiki-extensions-BoilerPlate/tree/master
 
 ## installation
 Go to the root of your MediaWiki setup.
