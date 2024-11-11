@@ -17,6 +17,7 @@ function isValidSignature(event) {
 
 
 async function logInWithNostr() {
+    console.log(mw.config.get('wgPluggableAuth_EnableLocalLogin'));
     const username = document.getElementById('username').value;
     const domain = document.getElementById("domain").value;
     console.log("Username: " + username);

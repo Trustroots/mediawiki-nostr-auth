@@ -14,13 +14,15 @@ class Config extends GlobalVarConfig {
 	/**
 	 * The page that contains our user-editable configuration.
 	 */
-	private const KEY_DOMAINS = 'Domains';
+	private const KEY_DOMAINS = 'NostrLoginDomains';
 
 	private array $domains;
 
 	public function __construct() {
-		parent::__construct( 'NostrLogin' );
+		//parent::__construct( 'NostrLogin' );
 		$this->domains = $this->initDomains();
+		$this->wgScriptPath = $this->get( 'wgScriptPath' );
+		$this->wgServer = $this->get( 'wgServer' );
 	}
 
 	public static function newInstance() {

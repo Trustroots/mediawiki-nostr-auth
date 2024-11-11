@@ -40,12 +40,19 @@
 			"i18n"
 		]
 	},
-	"config_prefix": "NostrLogin",
 	"config": {
-		"Domains": {
+		"NostrLoginDomains": {
 			"value": [],
 			"descriptionmsg": "nostrlogin-config-domains",
 			"path": false,
+			"public": true
+		},
+		"wgScriptPath": {
+			"value": "/mediawiki",
+			"public": true
+		},
+		"wgServer": {
+			"value": "http://localhost",
 			"public": true
 		}
 	},
