@@ -15,7 +15,6 @@ class SpecialNostrLogin extends SpecialPage
 
 	public function execute($par)
 	{
-		file_get_contents("https://www.trustroots.org/.well-known/nostr.json?name=tillwenke");
 		$request = $this->getRequest();
 		$output = $this->getOutput();
 		$this->setHeaders();
