@@ -14,6 +14,30 @@ Go to `Special:UserLogin`
 
 `Login with Nostr`.
 
+## installation
+Go to the root of your MediaWiki setup.
+
+Run:
+```
+cd extensions
+git clone https://github.com/Trustroots/mediawiki-nostr-auth.git
+```
+
+Add the following to `LocalSettings.php`
+```
+wfLoadExtension( 'mediawiki-nostr-auth' );
+$NostrLoginDomains = [
+	   'trustroots.org'
+];
+```
+
+Install the [PluggableAuth extension](https://www.mediawiki.org/wiki/Extension:PluggableAuth).
+Add the following to `LocalSettings.php`
+```
+wfLoadExtension( 'PluggableAuth' );
+$wgPluggableAuth_EnableLocalLogin = true;
+```
+
 ## path forward
 
 - [ ] We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard in October 2024.
@@ -31,23 +55,7 @@ Go to `Special:UserLogin`
 - https://github.com/hexmode/mediawiki-iframe/tree/master
 - https://github.com/wikimedia/mediawiki-extensions-BoilerPlate/tree/master
 
-## installation
-Go to the root of your MediaWiki setup.
 
-Run:
-```
-cd extensions
-git clone https://github.com/Trustroots/mediawiki-nostr-auth.git
-```
-
-Add the following to `LocalSettings.php`
-```
-wfLoadExtension( 'mediawiki-nostr-auth' );
-$NostrLoginDomains = [
-	   'trustroots.org',
-	   'couchers.org'
-];
-```
 
 ## assumptions
 - browser extension (e.g Alby) used to sign Nostr events
