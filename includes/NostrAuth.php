@@ -42,6 +42,8 @@ class NostrAuth extends PA_Base
 	 */
 	const NOSTR_PASSWORD = 'nostr_password';
 
+	const NOSTR_NIP05 = 'nostr_nip05';
+
 
 	/**
 	 * @param UserFactory $userFactory
@@ -67,12 +69,12 @@ class NostrAuth extends PA_Base
 
 		$username = $extraLoginFields[static::USERNAME] ?? '';
 		$nostr = $extraLoginFields[static::NOSTR_PASSWORD] ?? '';
-		$domain = "trustroots.org";
+		$domain = $extraLoginFields[static::NOSTR_NIP05] ??'';
 		try {
 			$url = 'https://www.' . $domain .'/.well-known/nostr.json?name=' . $username;
 			$json = file_get_contents($url);
 			$obj = json_decode($json, true);
-			$npub = $obj["names"][ucfirst($username)];
+			$npub = $obj["names"][$username];
 		} catch (\Exception) {
 			$errorMessage = "Failed to obtain npub from " . $domain;
             return false;
@@ -148,7 +150,12 @@ class NostrAuth extends PA_Base
 				'type' => 'string',
 				'label' => "Nostr Password",
 				'help' => "Get your Nostr password from Special:NostrLogin",
-			]
+			],
+			static::NOSTR_NIP05 => [
+				'type' => 'string',
+				'label' => "Nostr NIP-05 provider domain",
+				'help' => "The NIPO-05 provider domain e.g. trustroots.org",
+			],
 		];
 	}
 }
