@@ -52,11 +52,19 @@ Install https://github.com/nostrver-se/nostr-php via `composer` on your Mediawik
 - https://github.com/nostr-protocol/nips/issues/154
 
 ## inspiration
-- https://github.com/wikimedia/mediawiki-extensions-GoogleLogin
+
+### builing extensions
 - https://github.com/hexmode/mediawiki-iframe/tree/master
 - https://github.com/wikimedia/mediawiki-extensions-BoilerPlate/tree/master
 
+### building pluggable auth extensions
+- https://www.mediawiki.org/wiki/Extension:PluggableAuth
+- https://www.mediawiki.org/wiki/Extension:AuthRemoteUser
+- https://www.mediawiki.org/wiki/Extension:LDAPAuthentication2
 
+### building login
+- https://github.com/wikimedia/mediawiki-extensions-GoogleLogin
+- https://github.com/Sebastix/CCNS
 
 ## assumptions
 - browser extension (e.g Alby) used to sign Nostr events
