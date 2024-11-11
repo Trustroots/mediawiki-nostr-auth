@@ -5,9 +5,11 @@ This extension should enable people to log into mediawiki with their nostr ident
 
 ## Usage
 On your wiki go to `Special:NostrLogin`
+
 ![image](https://github.com/user-attachments/assets/3000d27c-73dd-40e8-a6fc-d2043af764a4)
 
 Go to `Special:UserLogin`
+
 ![image](https://github.com/user-attachments/assets/cd4a0062-3c61-4d21-839c-419601fbca59)
 
 `Login with Nostr`.
