@@ -1,6 +1,16 @@
+
 # mediawiki nostr auth extension
 
 This extension should enable people to log into mediawiki with their nostr identity.
+
+## Usage
+On your wiki go to `Special:NostrLogin`
+![image](https://github.com/user-attachments/assets/3000d27c-73dd-40e8-a6fc-d2043af764a4)
+
+Go to `Special:UserLogin`
+![image](https://github.com/user-attachments/assets/cd4a0062-3c61-4d21-839c-419601fbca59)
+
+`Login with Nostr`.
 
 ## path forward
 
@@ -51,5 +61,9 @@ To take advantage of this automation.
 2. change to the extension's directory
 3. `npm install`
 4. `composer install`
+
+## Funding
+
+## ...
 
 Once set up, running `npm test` and `composer test` will run automated code checks.
