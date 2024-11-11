@@ -37,6 +37,8 @@ wfLoadExtension( 'PluggableAuth' );
 $wgPluggableAuth_EnableLocalLogin = true;
 ```
 
+Install https://github.com/nostrver-se/nostr-php via `composer` on your Mediawiki.
+
 ## path forward
 
 - [ ] We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard in October 2024.
