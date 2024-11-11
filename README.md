@@ -31,8 +31,7 @@ $NostrLoginDomains = [
 ];
 ```
 
-Install the [PluggableAuth extension](https://www.mediawiki.org/wiki/Extension:PluggableAuth).
-Add the following to `LocalSettings.php`
+Install the [PluggableAuth extension](https://www.mediawiki.org/wiki/Extension:PluggableAuth) and the following to `LocalSettings.php`
 ```
 wfLoadExtension( 'PluggableAuth' );
 $wgPluggableAuth_EnableLocalLogin = true;
