@@ -19,10 +19,6 @@ class SpecialNostrLogin extends SpecialPage
 		$output = $this->getOutput();
 		$this->setHeaders();
 
-		if (!$this->getUser()->isAllowed('createaccount')) {
-			throw new PermissionsError('createaccount');
-		}
-
 		$NostrLoginDomains = $this->config->getDomains();
 		
 		ob_start();
