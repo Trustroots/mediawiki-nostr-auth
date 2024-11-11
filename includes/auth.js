@@ -51,5 +51,5 @@ async function logInWithNostr() {
     }
     console.log("Signature Valid.");
     document.getElementById("nostr_password").innerHTML = "<b>Nostr password</b>: " + signEvent.sig;
-    document.getElementById("forward").innerHTML = "Copy the password and go to <a href=\"" + mw.config.get('wgServer') + "\">the Log In page of this wiki</a> to continue.";
+    document.getElementById("forward").innerHTML = "Copy the password and go to <a href=\"" + mw.config.get('wgServer') + "\">the Log In page of this Wiki</a> to continue.";
 }
