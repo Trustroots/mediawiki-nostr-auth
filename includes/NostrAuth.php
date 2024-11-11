@@ -67,11 +67,17 @@ class NostrAuth extends PA_Base
 
 		$username = $extraLoginFields[static::USERNAME] ?? '';
 		$nostr = $extraLoginFields[static::NOSTR_PASSWORD] ?? '';
-
-		$url = 'https://www.trustroots.org/.well-known/nostr.json?name=' . $username;
-		$json = file_get_contents($url);
-		$obj = json_decode($json, true);
-		$npub = $obj["names"][ucfirst($username)];
+		$domain = "trustroots.org";
+		try {
+			$url = 'https://www.' . $domain .'/.well-known/nostr.json?name=' . $username;
+			$json = file_get_contents($url);
+			$obj = json_decode($json, true);
+			$npub = $obj["names"][ucfirst($username)];
+		} catch (\Exception) {
+			$errorMessage = "Failed to obtain npub from " . $domain;
+            return false;
+		}
+		
 		
 		// in accordance with auth.js
 		$note = new Event();

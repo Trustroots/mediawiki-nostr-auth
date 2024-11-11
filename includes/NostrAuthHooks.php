@@ -25,7 +25,7 @@ class NostrAuthHooks {
 		}
 		$GLOBALS['wgPluggableAuth_Config'][$info['name']] = [
 			'plugin' => 'NostrLogin',
-			'buttonLabelMessage' => 'nostrlogin-desc',
+			'buttonLabelMessage' => 'nostrlogin-login-button',
 		];
 	}
 }
