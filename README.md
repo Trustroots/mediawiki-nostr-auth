@@ -1,6 +1,41 @@
+
 # mediawiki nostr auth extension
 
 This extension should enable people to log into mediawiki with their nostr identity.
+
+## Usage
+On your wiki go to `Special:NostrLogin`
+
+![image](https://github.com/user-attachments/assets/3000d27c-73dd-40e8-a6fc-d2043af764a4)
+
+Go to `Special:UserLogin`
+
+![image](https://github.com/user-attachments/assets/cd4a0062-3c61-4d21-839c-419601fbca59)
+
+`Login with Nostr`.
+
+## installation
+Go to the root of your MediaWiki setup.
+
+Run:
+```
+cd extensions
+git clone https://github.com/Trustroots/mediawiki-nostr-auth.git
+```
+
+Add the following to `LocalSettings.php`
+```
+wfLoadExtension( 'mediawiki-nostr-auth' );
+$NostrLoginDomains = [
+	   'trustroots.org'
+];
+```
+
+Install the [PluggableAuth extension](https://www.mediawiki.org/wiki/Extension:PluggableAuth) and the following to `LocalSettings.php`
+```
+wfLoadExtension( 'PluggableAuth' );
+$wgPluggableAuth_EnableLocalLogin = true;
+```
 
 ## path forward
 
@@ -19,23 +54,7 @@ This extension should enable people to log into mediawiki with their nostr ident
 - https://github.com/hexmode/mediawiki-iframe/tree/master
 - https://github.com/wikimedia/mediawiki-extensions-BoilerPlate/tree/master
 
-## installation
-Go to the root of your MediaWiki setup.
 
-Run:
-```
-cd extensions
-git clone https://github.com/Trustroots/mediawiki-nostr-auth.git
-```
-
-Add the following to `LocalSettings.php`
-```
-wfLoadExtension( 'mediawiki-nostr-auth' );
-$NostrLoginDomains = [
-	   'trustroots.org',
-	   'couchers.org'
-];
-```
 
 ## assumptions
 - browser extension (e.g Alby) used to sign Nostr events
@@ -51,5 +70,9 @@ To take advantage of this automation.
 2. change to the extension's directory
 3. `npm install`
 4. `composer install`
+
+## Funding
+
+## ...
 
 Once set up, running `npm test` and `composer test` will run automated code checks.
