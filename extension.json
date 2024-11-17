@@ -24,11 +24,7 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "MediaWiki\\Extension\\NostrLogin\\Hooks",
-			"services": [
-				"MainConfig",
-				"UserOptionsLookup"
-			]
+			"class": "MediaWiki\\Extension\\NostrLogin\\Hooks"
 		}
 	},
 	"callback": "MediaWiki\\Extension\\NostrLogin\\NostrAuthHooks::onRegistration",
