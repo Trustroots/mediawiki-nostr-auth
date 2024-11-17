@@ -52,6 +52,7 @@ class NostrAuth extends PA_Base
 	public function __construct(AuthManager $authManager)
 	{
 		$this->authManager = $authManager;
+		$this->config = new Config();
 	}
 
 	/**
@@ -70,6 +71,14 @@ class NostrAuth extends PA_Base
 		$username = $extraLoginFields[static::USERNAME] ?? '';
 		$nostr = $extraLoginFields[static::NOSTR_PASSWORD] ?? '';
 		$domain = $extraLoginFields[static::NOSTR_NIP05] ??'';
+		if (!(in_array($domain, $this->config->getDomains()))){
+			$errorMessage = "NIP-05 domain " . $domain . " is not allowed.\nAllowed domains are:\n";
+			foreach ($this->config->getDomains() as $configured_domain){
+				$errorMessage .= $configured_domain . "\n";
+			}
+			$errorMessage = nl2br($errorMessage);
+            return false;
+		}
 		try {
 			$url = 'https://www.' . $domain .'/.well-known/nostr.json?name=' . $username;
 			$json = file_get_contents($url);
