@@ -19,7 +19,18 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\NostrLogin\\": "includes/"
 	},
-	"Hooks": {},
+	"Hooks": {
+		"SkinTemplateNavigation::Universal": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\NostrLogin\\Hooks",
+			"services": [
+				"MainConfig",
+				"UserOptionsLookup"
+			]
+		}
+	},
 	"callback": "MediaWiki\\Extension\\NostrLogin\\NostrAuthHooks::onRegistration",
 	"attributes": {
 		"PluggableAuth": {
