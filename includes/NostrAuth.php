@@ -120,9 +120,6 @@ class NostrAuth extends PA_Base
         }
 
 		$note->setId($computedId);
-		$errorMessage = "Nostr signature verification failed";
-		$errorMessage .= "with Event: " . $note->toJson();
-		return false;
 		if (!$note->verify()) {
 			$errorMessage = "Nostr signature verification failed";
 			$errorMessage .= "with Event: " . $note->toJson();
