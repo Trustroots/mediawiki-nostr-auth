@@ -48,7 +48,7 @@ async function logInWithNostr() {
 
     if (!isValidSignature(signEvent)) {
         throw new AuthenticationError("Invalid Signature - Seems like that an incorrect private key was used to sign the event");
-    }mw.config.get('wgServer')
+    }
     console.log("Signature Valid.");
     document.getElementById("nostr_password").innerHTML = "<b>Nostr password</b>: " + signEvent.sig;
     document.getElementById("forward").innerHTML = "Copy the password and go to <a href=\""
