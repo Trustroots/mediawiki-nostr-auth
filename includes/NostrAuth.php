@@ -49,9 +49,10 @@ class NostrAuth extends PA_Base
 	 * @param UserFactory $userFactory
 	 * @param AuthManager $authManager
 	 */
-	public function __construct(AuthManager $authManager)
+	public function __construct(AuthManager $authManager, UserFactory $userFactory)
 	{
 		$this->authManager = $authManager;
+		$this->userFactory = $userFactory;
 		$this->config = new Config();
 	}
 
@@ -61,7 +62,7 @@ class NostrAuth extends PA_Base
 	 */
 	public function authenticate(?int &$id, ?string &$username, ?string &$realname, ?string &$email, ?string &$errorMessage): bool
 	{
-		// does the trick for now
+		// does the trick for now - TODO set id if user exists
 		$id = null;
 
 		$extraLoginFields = $this->authManager->getAuthenticationSessionData(

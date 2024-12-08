@@ -33,7 +33,8 @@
 			"NostrLogin": {
 				"class": "MediaWiki\\Extension\\NostrLogin\\NostrAuth",
 				"services": [
-					"AuthManager"
+					"AuthManager",
+					"UserFactory"
 				],
 				"LoginSpecialPages": [ "NostrLogin" ]
 			}

@@ -19,7 +19,6 @@ class Config extends GlobalVarConfig {
 	private array $domains;
 
 	public function __construct() {
-		//parent::__construct( 'NostrLogin' );
 		$this->domains = $this->initDomains();
 		$this->wgScriptPath = $this->get( 'wgScriptPath' );
 		$this->wgServer = $this->get( 'wgServer' );
