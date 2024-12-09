@@ -71,7 +71,7 @@ class NostrAuth extends PA_Base
 
 		$username = $extraLoginFields[static::USERNAME] ?? '';
 		$nostr = $extraLoginFields[static::NOSTR_PASSWORD] ?? '';
-		$domain = $extraLoginFields[static::NOSTR_NIP05] ??'';
+		$domain = $extraLoginFields[static::NOSTR_NIP05] ?? '';
 		if (!(in_array($domain, $this->config->getDomains()))){
 			$errorMessage = "NIP-05 domain " . $domain . " is not allowed.\nAllowed domains are:\n";
 			foreach ($this->config->getDomains() as $configured_domain){
@@ -158,12 +158,12 @@ class NostrAuth extends PA_Base
 			],
 			static::NOSTR_PASSWORD => [
 				'type' => 'string',
-				'label' => "Nostr Password",
+				'label' => wfMessage( 'nostrlogin-loginfield-password' ),
 				'help' => "Get your Nostr password from Special:NostrLogin",
 			],
 			static::NOSTR_NIP05 => [
 				'type' => 'string',
-				'label' => "Nostr NIP-05 provider domain",
+				'label' => wfMessage( 'nostrlogin-loginfield-nip05' ),
 				'help' => "The NIPO-05 provider domain e.g. trustroots.org",
 			],
 		];

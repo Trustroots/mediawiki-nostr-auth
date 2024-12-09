@@ -4,8 +4,11 @@
 			"nostroots"
 		]
 	},
+	"nostrlogin": "Nostr Login",
 	"iframe-config-hosts": "A list of NIP05 domains to choose from.",
 	"nostrlogin-config-error-array-expected": "Array of domains expected.",
 	"nostrlogin-desc": "Extension to allow login via Nostr NIP07 browser extensions.",
-	"nostrlogin-login-button": "Login with Nostr"
+	"nostrlogin-login-button": "Login with Nostr",
+	"nostrlogin-loginfield-password": "Nostr Password",
+	"nostrlogin-loginfield-nip05": "Nostr NIP-05 provider domain"
 }

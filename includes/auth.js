@@ -21,11 +21,6 @@ async function logInWithNostr() {
     const username = document.getElementById('username').value;
     const domain = document.getElementById("domain").value;
     console.log("Username: " + username);
-    // check for trustroots user
-    let profile = await window.NostrTools.nip05.queryProfile(fullname = username + domain)
-    console.log(profile)
-
-    const pubkey_nip05 = profile.pubkey
 
     // use browser extension to verify the user
     // from https://github.com/nostr-protocol/nips/issues/154
@@ -33,10 +28,20 @@ async function logInWithNostr() {
     if (!window.nostr) {
         throw new AuthenticationError("No Nostr Browser Extension found");
     }
+
+    console.log("test")
+
+    // check for trustroots user
+    // let profile = await window.NostrTools.nip05.queryProfile(fullname = username + domain)
+    // console.log(profile)
+
+    // const pubkey_nip05 = profile.pubkey
+
     const pubkey_nip07 = await window.nostr.getPublicKey();
-    if (pubkey_nip05 != pubkey_nip07) {
-        throw new AuthenticationError("Nip05-Nip07 Pubkey mismatch");
-    }
+    // if (pubkey_nip05 != pubkey_nip07) {
+    //     throw new AuthenticationError("Nip05-Nip07 Pubkey mismatch");
+    // }
+
     const pubkey = pubkey_nip07;
 
     console.log("pubKey: " + pubkey);

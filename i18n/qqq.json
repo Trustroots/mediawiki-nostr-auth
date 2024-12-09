@@ -4,6 +4,7 @@
 			"nostroots"
 		]
 	},
+	"nostrlogin": "The name of the extension's entry in Special:SpecialPages",
 	"iframe-config-hosts": "A list of NIP05 domains to choose from.",
 	"nostrlogin-config-error-array-expected": "Array of domains expected.",
 	"nostrlogin-desc": "{{desc|name=NostrLogin|url=https://www.mediawiki.org/wiki/Extension:NostrLogin}}",
