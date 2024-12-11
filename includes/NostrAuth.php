@@ -70,6 +70,16 @@ class NostrAuth extends PA_Base
 		);
 
 		$username = $extraLoginFields[static::USERNAME] ?? '';
+
+		$user = $this->userFactory->newFromName( $username );
+		if ( $user !== false && $user->getId() !== 0 ) {
+			$id = $user->getId();
+			if ($this->isEmailSet($user->getEmail())){
+				$errorMessage = "User email is already set. Please use your normal password to login. Nostr is only meant to be used for authentication.";
+            	return false;
+			}
+		}
+
 		$nostr = $extraLoginFields[static::NOSTR_PASSWORD] ?? '';
 		$domain = $extraLoginFields[static::NOSTR_NIP05] ?? '';
 		if (!(in_array($domain, $this->config->getDomains()))){
@@ -128,6 +138,10 @@ class NostrAuth extends PA_Base
 		}
 
 		return true;
+	}
+
+	public function isEmailSet(string $email){
+		return $email !== "";
 	}
 
 	/**

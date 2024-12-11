@@ -29,6 +29,9 @@ wfLoadExtension( 'mediawiki-nostr-auth' );
 $NostrLoginDomains = [
 	   'trustroots.org'
 ];
+# to set email after authenticating with nostr
+$wgGroupPermissions['*']['editmyprivateinfo'] = true;
+$wgGroupPermissions['*']['viewmyprivateinfo'] = true;
 ```
 
 Install the [PluggableAuth extension](https://www.mediawiki.org/wiki/Extension:PluggableAuth) and the following to `LocalSettings.php`
