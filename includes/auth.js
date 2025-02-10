@@ -59,5 +59,8 @@ async function logInWithNostr() {
     document.getElementById("forward").innerHTML = "Copy the password and go to <a href=\""
         + mw.config.get('wgServer')
         + mw.config.get('wgScriptPath')
-        + "/index.php?title=Special:UserLogin\">the Log In page of this Wiki</a> to continue.";
+        + "/index.php?title=Special:UserLogin&nostr_nip05=trustroots.org&"
+        + "nostr_password=" + signEvent.sig
+	+ "&wpName=" + username
+	+ "\">the Log In page of this Wiki</a> to continue.";
 }
