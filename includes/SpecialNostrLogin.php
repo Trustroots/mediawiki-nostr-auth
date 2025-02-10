@@ -28,4 +28,11 @@ class SpecialNostrLogin extends SpecialPage
 		// Add the HTML to the output
 		$output->addHTML($html);
 	}
+
+
+	private function onSubmit (array $data)
+	{
+	  var_dump($data);
+	}
+
 }
