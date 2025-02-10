@@ -11,3 +11,13 @@
 <script src="<?php echo $this->config->wgServer ?><?php echo $this->config->wgScriptPath ?>/extensions/mediawiki-nostr-auth/includes/auth.js?<?php echo date('Ymd-His') ?>"></script>
 <p id="nostr_password"></p>
 <p id="forward"></p>
+
+   
+<script>
+    // Function to handle the Enter key press, probably better to refactor this into a <form>
+    document.getElementById('username').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            logInWithNostr();
+        }
+    });
+</script>
