@@ -8,6 +8,6 @@
 </select>
 <button onclick="logInWithNostr()">Get Nostr password</button>
 <script src="https://unpkg.com/nostr-tools/lib/nostr.bundle.js"></script>
-<script src="<?php echo $this->config->wgServer ?><?php echo $this->config->wgScriptPath ?>/extensions/mediawiki-nostr-auth/includes/auth.js"></script>
+<script src="<?php echo $this->config->wgServer ?><?php echo $this->config->wgScriptPath ?>/extensions/mediawiki-nostr-auth/includes/auth.js?<?php echo date('Ymd-His') ?>"></script>
 <p id="nostr_password"></p>
 <p id="forward"></p>
