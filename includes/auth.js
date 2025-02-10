@@ -56,11 +56,11 @@ async function logInWithNostr() {
     }
     console.log("Signature Valid.");
     document.getElementById("nostr_password").innerHTML = "<b>Nostr password</b>: " + signEvent.sig;
-    document.getElementById("forward").innerHTML = "Copy the password and go to <a href=\""
+    document.getElementById("forward").innerHTML = "Go to <a href=\""
         + mw.config.get('wgServer')
         + mw.config.get('wgScriptPath')
         + "/index.php?title=Special:UserLogin&nostr_nip05=trustroots.org&"
         + "nostr_password=" + signEvent.sig
 	+ "&wpName=" + username
-	+ "\">the Log In page of this Wiki</a> to continue.";
+	+ "\">the standard login page of this wiki</a> and click the blue Login with Nostr button.";
 }
