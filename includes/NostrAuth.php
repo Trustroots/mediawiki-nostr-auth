@@ -91,6 +91,7 @@ class NostrAuth extends PA_Base
             return false;
 		}
 		try {
+		        // TODO: remove assumption that domain name starts with www.
 			$url = 'https://www.' . $domain .'/.well-known/nostr.json?name=' . $username;
 			$json = file_get_contents($url);
 			$obj = json_decode($json, true);

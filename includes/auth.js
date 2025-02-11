@@ -56,11 +56,20 @@ async function logInWithNostr() {
     }
     console.log("Signature Valid.");
     document.getElementById("nostr_password").innerHTML = "<b>Nostr password</b>: " + signEvent.sig;
-    document.getElementById("forward").innerHTML = "Go to <a href=\""
-        + mw.config.get('wgServer')
+    formUrl = mw.config.get('wgServer')
         + mw.config.get('wgScriptPath')
         + "/index.php?title=Special:UserLogin&nostr_nip05=trustroots.org&"
         + "nostr_password=" + signEvent.sig
-	+ "&wpName=" + username
+	+ "&wpName=" + username;
+    document.getElementById("forward").innerHTML = "Go to <a href=\"" + formUrl
 	+ "\">the standard login page of this wiki</a> and click the blue Login with Nostr button.";
+    window.location.href = formUrl;
 }
+
+// Function to focus on the input field
+function focusOnUsername() {
+    document.getElementById('username').focus();
+}
+
+window.onload = focusOnUsername;
+

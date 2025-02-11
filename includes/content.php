@@ -1,5 +1,7 @@
 <p>We use the signature of a Nostr event as the <b>Nostr password</b>. With this signature we can verify that you have access to the private key.</p>
-<p>You need to a have Nostr signing extension installed in your browser e.g. <a href="https://getalby.com/">Alby</a> for Chrome</p>
+
+<p>You need to a have a NIP-07 Nostr signing extension installed in your browser e.g. <a href="https://getalby.com/">Alby</a> or nos2x</p>
+
 <input type="text" id="username" placeholder="Enter username">
 <select id="domain">
     <?php foreach ($NostrLoginDomains as $domain): ?>
