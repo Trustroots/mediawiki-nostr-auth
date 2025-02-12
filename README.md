@@ -1,7 +1,16 @@
 
 # mediawiki nostr auth extension
 
-This extension should enable people to log into mediawiki with their nostr identity.
+This extension enables people to log into mediawiki with their nostr identity.
+
+It is using [NIP-05](https://github.com/nostr-protocol/nips/blob/master/05.md) to only allow users that have specific domains.
+
+It currently relies on [NIP-07](https://github.com/nostr-protocol/nips/blob/master/07.md) so it will only work with browser extensions that can hold your nsec private key.
+
+The extension is related to the [nostroots](https://github.com/trustroots/nostroots) project, the goal is to move [trustroots](https://www.trustroots.org/) onto [nostr](https://nostr.net/).
+
+We want to support [NIP-46](https://github.com/nostr-protocol/nips/blob/master/46.md) in the future.
+
 
 ## Usage
 On your wiki go to `Special:NostrLogin`
@@ -44,7 +53,7 @@ Install https://github.com/nostrver-se/nostr-php via `composer` on your Mediawik
 
 ## path forward
 
-- [ ] We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard in October 2024.
+- [x] We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard in October 2024.
 - [ ] Thoughts about the user flow: https://github.com/Trustroots/mediawiki-nostr-auth/issues/5
 - [ ] When we have something that works we'll set it up on trashwiki.org
 - [ ] Finally set it up on hitchwiki.org, which is the most active wiki we run.
