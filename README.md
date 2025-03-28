@@ -23,7 +23,7 @@ Go to `Special:UserLogin`
 
 `Login with Nostr`.
 
-## installation
+## Installation
 Go to the root of your MediaWiki setup.
 
 Run:
@@ -51,7 +51,7 @@ $wgPluggableAuth_EnableLocalLogin = true;
 
 Install https://github.com/nostrver-se/nostr-php via `composer` on your Mediawiki.
 
-## path forward
+## Path Forward
 
 - [x] We'll first try to get this to work on nomadwiki.org, which arose from the digital graveyard in October 2024.
 - [ ] Thoughts about the user flow: https://github.com/Trustroots/mediawiki-nostr-auth/issues/5
@@ -59,17 +59,17 @@ Install https://github.com/nostrver-se/nostr-php via `composer` on your Mediawik
 - [ ] Finally set it up on hitchwiki.org, which is the most active wiki we run.
 - [ ] Promote logging into these wikis to trustroots users.
 
-## resources
+## Resources
 
 - https://github.com/nostr-protocol/nips/issues/154
 
-## inspiration
+## Inspiration
 
-### builing extensions
+### Builing Extensions
 - https://github.com/hexmode/mediawiki-iframe/tree/master
 - https://github.com/wikimedia/mediawiki-extensions-BoilerPlate/tree/master
 
-### building pluggable auth extensions
+### Building pluggable auth extensions
 - https://www.mediawiki.org/wiki/Extension:PluggableAuth
 - https://www.mediawiki.org/wiki/Extension:AuthRemoteUser
 - https://www.mediawiki.org/wiki/Extension:LDAPAuthentication2
