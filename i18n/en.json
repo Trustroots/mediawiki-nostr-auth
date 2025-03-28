@@ -5,10 +5,10 @@
 		]
 	},
 	"nostrlogin": "Nostr Login",
-	"nostrlogin-config-domains": "A list of NIP05 domains to choose from.",
+	"nostrlogin-config-domains": "A list of NIP-05 https://github.com/nostr-protocol/nips/blob/master/05.md domains to choose from.",
 	"nostrlogin-config-error-array-expected": "Array of domains expected.",
-	"nostrlogin-desc": "Extension to allow login via Nostr NIP07 browser extensions.",
-	"nostrlogin-login-button": "Login with Nostr",
+	"nostrlogin-desc": "Extension to allow login via Nostr signing browser extensions (according to NIP-07 https://github.com/nostr-protocol/nips/blob/master/07.md).",
+	"nostrlogin-login-button": "Login with Nostr https://github.com/nostr-protocol/nostr",
 	"nostrlogin-loginfield-password": "Nostr Password",
-	"nostrlogin-loginfield-nip05": "Nostr NIP-05 provider domain"
+	"nostrlogin-loginfield-nip05": "Nostr identification provider domain (according to NIP-05 https://github.com/nostr-protocol/nips/blob/master/05.md - On which website did you create your Nostr account?)"
 }
