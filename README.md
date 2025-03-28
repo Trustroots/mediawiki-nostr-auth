@@ -95,6 +95,9 @@ To take advantage of this automation.
 
 Once set up, running `npm test` and `composer test` will run automated code checks.
 
+## Contributing
+Feel free to contribute via a pull request, create or assign yourself to an existing issue before working on it.
+
 ## Funding
 
 In August 2024 OpenSats granted Trustroots to work on nostroots https://opensats.org/blog/nostr-grants-august-2024#nostroots as the Trustroots ecosystem includes several MediaWikis we invested energy into this MediaWiki extension to tighten the bonds between nostroots and the Wikis.
