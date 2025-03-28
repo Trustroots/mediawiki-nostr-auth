@@ -9,6 +9,6 @@
 	"nostrlogin-config-error-array-expected": "Array of domains expected.",
 	"nostrlogin-desc": "Extension to allow login via Nostr signing browser extensions (according to NIP-07 https://github.com/nostr-protocol/nips/blob/master/07.md).",
 	"nostrlogin-login-button": "Login with Nostr",
-	"nostrlogin-loginfield-password": "Nostr Password",
+	"nostrlogin-loginfield-password": "One-time Nostr Password from https://nomadwiki.org/Special:NostrLogin",
 	"nostrlogin-loginfield-nip05": "Nostr identification provider domain (according to NIP-05 https://github.com/nostr-protocol/nips/blob/master/05.md - On which website did you create your Nostr account?)"
 }
