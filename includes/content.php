@@ -6,6 +6,8 @@
 
 <p>Next you need to provide your username on that website and the domain of that website.</p>
 
+<p>After clicking 'Get Nostr password' your Nostr browser extension will request you to sign a Nostr event - proceed.</p>
+
 <input type="text" id="username" placeholder="Enter username">
 <select id="domain">
     <?php foreach ($NostrLoginDomains as $domain): ?>
