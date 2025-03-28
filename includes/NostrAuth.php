@@ -179,7 +179,7 @@ class NostrAuth extends PA_Base
 			static::NOSTR_NIP05 => [
 				'type' => 'string',
 				'label' => wfMessage( 'nostrlogin-loginfield-nip05' ),
-				'help' => "The NIPO-05 provider domain e.g. trustroots.org",
+				'help' => "The NIP-05 provider domain e.g. trustroots.org",
 			],
 		];
 	}
