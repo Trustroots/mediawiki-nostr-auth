@@ -1,3 +1,5 @@
+<p> Nostr https://github.com/nostr-protocol/nostr is brought to the hitchwiki.org and trustroots.org eco-system to become more independent of single people running those services. Help us to make this transition happen. We are there to support you.</p>
+
 <p>You can create a new account for this wiki if you already have an account on any of the websites we trust (e.g. trustroots.org). For this to work, you have to link your Nostr profile to this website or conveniently have your Nostr profile created there.</p>
 
 <p>On trustroots.org, you can create a Nostr profile via https://www.trustroots.org/profile/edit/networks.</p>
