@@ -1,3 +1,5 @@
+DEPRECATED check https://github.com/Hitchwiki/mediawiki-nostr
+
 
 # mediawiki nostr auth extension
 
